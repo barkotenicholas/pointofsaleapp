@@ -19,11 +19,11 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
         switch (i) {
             case 1:
-                return new Productlist();
-            case 2:
                 return new Cart();
+            case 2:
+                return new Productlist();
             default:
-                return new Productlist() ;
+                return new Productlist();
 
         }
     }

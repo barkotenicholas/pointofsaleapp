@@ -57,7 +57,7 @@ public class ProductsRepository {
 
     public void getProducts() {
 
-        Shop shop = new Shop("ketiow");
+        Shop shop = new Shop("barkotenicho","ketiow");
         productsCall = ProductsRepository.networkCalls.getAllProducts(shop);
 
         productsCall.clone().enqueue(new Callback<List<ProductsCall>>() {
