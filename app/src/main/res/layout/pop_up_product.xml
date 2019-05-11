@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    xmlns:numpad="http://schemas.android.com/apk/res-auto"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="50dp">
+
+        <TextView
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productname"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="30sp"
+            android:text="@string/retail"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/priceProduct"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <com.fxn769.Numpad
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="40dp"
+            android:id="@+id/num"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="50dp"
+            numpad:numpad_background_resource="@drawable/numpad_background"
+            numpad:numpad_fontpath="fonts/custom_font.ttf"
+            numpad:numpad_grid_background_color="@color/colorAccent"
+            numpad:numpad_grid_line_thickness="2dp"
+            numpad:numpad_grid_visible="true"
+            numpad:numpad_image_resource="@drawable/ic_backspace"
+            numpad:numpad_text_color="#000000"
+            numpad:numpad_text_limit="10"
+            numpad:numpad_text_size="18dp"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="50dp">
+            <Button
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:id="@+id/save"
+                android:text="Save"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="50dp">
+            <Button
+                android:id="@+id/cancel_action"
+                android:text="cancel"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

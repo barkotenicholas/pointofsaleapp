@@ -1,66 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:focusable="false"
+    android:clickable="false"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="52dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/type" />
+ />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="149dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="52dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/type"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="18dp"
+        android:layout_marginStart="44dp"
+/>
 
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/description"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
+       />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/description"
-        tools:layout_editor_absoluteX="134dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="18dp"
+  />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="8dp"
-        android:text="CheckBox"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginStart="300dp"
+        android:text="@string/cart"
+      />
+</LinearLayout>

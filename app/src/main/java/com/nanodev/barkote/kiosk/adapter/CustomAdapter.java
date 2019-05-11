@@ -2,92 +2,81 @@ package com.nanodev.barkote.kiosk.adapter;
 
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.nanodev.barkote.kiosk.R;
-import com.nanodev.barkote.kiosk.database.entities.Products;
-import com.nanodev.barkote.kiosk.retrofit.model.ProductsCall;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<ProductsCall> implements View.OnClickListener{
+public class CustomAdapter extends ArrayAdapter<DataModel> {
 
-    private ArrayList<ProductsCall> dataSet;
     Context mContext;
+    private ArrayList<DataModel> dataSet;
+    private int lastPosition = -1;
 
-    // View lookup cache
-    private static class ViewHolder {
-        TextView txtName;
-        TextView txtType;
-        TextView txtVersion;
-        ImageView info;
-    }
-
-    public CustomAdapter(ArrayList<ProductsCall> data, Context context) {
+    public CustomAdapter(ArrayList<DataModel> data, Context context) {
         super(context, R.layout.productlayout, data);
         this.dataSet = data;
-        this.mContext=context;
+        this.mContext = context;
 
     }
-
-    @Override
-    public void onClick(View v) {
-
-        int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        ProductsCall dataModel=(ProductsCall) object;
-
-        switch (v.getId())
-        {
-            case R.id.txt_lan:
-                Snackbar.make(v, "Release date " +dataModel.getDescription(), Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-                break;
-        }
-    }
-
-    private int lastPosition = -1;
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        ProductsCall dataModel = getItem(position);
+        DataModel dataModel = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
 
-        final View result;
+        LayoutInflater inflater = LayoutInflater.from(mContext);
 
-        if (convertView == null) {
+        View result;
 
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.productlayout, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.txtType = (TextView) convertView.findViewById(R.id.type);
+        viewHolder = new ViewHolder();
 
-            result=convertView;
+        result = inflater.inflate(R.layout.productlayout, null, true);
+        viewHolder.txtName = result.findViewById(R.id.name);
+        viewHolder.txtType = result.findViewById(R.id.type);
+        viewHolder.desncriptio = result.findViewById(R.id.description);
+        viewHolder.price = result.findViewById(R.id.price);
+        viewHolder.quantity = result.findViewById(R.id.textView7);
+        viewHolder.checkBox = result.findViewById(R.id.checkBox);
 
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
-        }
+        result.setTag(viewHolder);
+
 
         Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
         result.startAnimation(animation);
         lastPosition = position;
 
-        viewHolder.info.setOnClickListener(this);
-        viewHolder.info.setTag(position);
+        assert dataModel != null;
+        viewHolder.txtName.setText(dataModel.getA());
+        viewHolder.txtType.setText(dataModel.getB());
+        viewHolder.desncriptio.setText(dataModel.getC());
+        viewHolder.price.setText(dataModel.getD());
+        viewHolder.quantity.setText(dataModel.getE());
+
+        viewHolder.txtType.setTag(position);
+
         // Return the completed view to render on screen
-        return convertView;
+        return result;
+    }
+
+    // View lookup cache
+    private static class ViewHolder {
+        TextView txtName;
+        TextView txtType;
+        TextView desncriptio;
+        TextView price;
+        TextView quantity;
+        CheckBox checkBox;
+
     }
 }
