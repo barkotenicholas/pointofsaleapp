@@ -1,6 +1,9 @@
 package com.nanodev.barkote.kiosk.adapter;
 
-public class DataModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DataModel implements Parcelable {
 
     public String a,b,c,d,e,f;
 
@@ -12,6 +15,27 @@ public class DataModel {
         this.e = e;
         this.f = f;
     }
+
+    protected DataModel(Parcel in) {
+        a = in.readString();
+        b = in.readString();
+        c = in.readString();
+        d = in.readString();
+        e = in.readString();
+        f = in.readString();
+    }
+
+    public static final Creator<DataModel> CREATOR = new Creator<DataModel>() {
+        @Override
+        public DataModel createFromParcel(Parcel in) {
+            return new DataModel(in);
+        }
+
+        @Override
+        public DataModel[] newArray(int size) {
+            return new DataModel[size];
+        }
+    };
 
     public String getA() {
         return a;
@@ -59,5 +83,20 @@ public class DataModel {
 
     public void setF(String f) {
         this.f = f;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(a);
+        dest.writeString(b);
+        dest.writeString(c);
+        dest.writeString(d);
+        dest.writeString(e);
+        dest.writeString(f);
     }
 }

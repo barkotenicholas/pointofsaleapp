@@ -1,92 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
     xmlns:numpad="http://schemas.android.com/apk/res-auto"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/colorPrimaryDark"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
+            android:id="@+id/productname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/productname"/>
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="330dp">
+
+            <TextView
+                android:id="@+id/quantityleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:layout_height="50dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="30sp"
-            android:text="@string/retail"/>
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/priceProduct"/>
+            android:text="@string/retail"
+            android:textSize="30sp" />
+
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="180dp">
+
+            <TextView
+                android:id="@+id/priceProduct"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+        </LinearLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="300dp"
+        android:orientation="vertical">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/remaining_digit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textColor="#000000"
+                android:textDirection="ltr" />
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="#000000"
+                android:textDirection="rtl"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
 
         <com.fxn769.Numpad
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="40dp"
             android:id="@+id/num"
             android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="60dp"
             android:layout_marginBottom="50dp"
-            numpad:numpad_background_resource="@drawable/numpad_background"
-            numpad:numpad_fontpath="fonts/custom_font.ttf"
             numpad:numpad_grid_background_color="@color/colorAccent"
-            numpad:numpad_grid_line_thickness="2dp"
-            numpad:numpad_grid_visible="true"
+            numpad:numpad_grid_line_thickness="1dp"
             numpad:numpad_image_resource="@drawable/ic_backspace"
             numpad:numpad_text_color="#000000"
             numpad:numpad_text_limit="10"
-            numpad:numpad_text_size="18dp"
-            />
+            numpad:numpad_text_size="10dp" />
     </LinearLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
         android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="180dp"
-            android:layout_height="50dp">
-            <Button
-                android:layout_width="match_parent"
-                android:background="@color/colorPrimaryDark"
-                android:id="@+id/save"
-                android:text="Save"
-                android:layout_height="match_parent" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="180dp"
             android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/save"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/roundbutton"
+
+                android:text="@string/save" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right">
+
             <Button
                 android:id="@+id/cancel_action"
-                android:text="cancel"
-                android:layout_width="match_parent"
-                android:background="@color/colorPrimaryDark"
-                android:layout_height="match_parent" />
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@drawable/roundbutton"
+                android:text="@string/cancel" />
         </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>

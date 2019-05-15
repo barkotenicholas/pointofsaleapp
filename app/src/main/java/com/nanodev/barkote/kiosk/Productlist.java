@@ -1,12 +1,16 @@
 package com.nanodev.barkote.kiosk;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -25,8 +29,8 @@ public class Productlist extends Fragment {
     public ArrayList<String> selectItems = new ArrayList<>();
     private static CustomAdapter adapter;
     private ListView listView;
-    Dialog dialog;
     ArrayList<DataModel> dataModels;
+    private FragmentActivity myContext;
     public Productlist() {
         // Required empty public constructor
 
@@ -45,8 +49,6 @@ public class Productlist extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_productlist, container, false);
-
-        dialog =new Dialog(view.getContext());
 
 
 
@@ -76,7 +78,13 @@ public class Productlist extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                showPop();
+                Object object = parent.getAdapter().getItem(position);
+
+                DataModel dataModel =  (DataModel)object;
+
+
+
+                showPop(dataModel);
 
             }
         });
@@ -85,11 +93,21 @@ public class Productlist extends Fragment {
 
     }
 
-    private void showPop() {
+    private void showPop(DataModel dataModel) {
 
-        dialog.setContentView(R.layout.pop_up_product);
+    ItemChooser itemChooser = new ItemChooser();
+    Bundle b = new Bundle();
+    b.putParcelable("Detail", (Parcelable) dataModel);
+    itemChooser.setArguments(b);
+    itemChooser.show(myContext.getSupportFragmentManager(),itemChooser.getTag());
+
+
     }
-
+    @Override
+    public void onAttach(Activity activity) {
+        myContext=(FragmentActivity) activity;
+        super.onAttach(activity);
+    }
 }
 
 
